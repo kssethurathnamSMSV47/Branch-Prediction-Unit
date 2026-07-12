@@ -1,0 +1,46 @@
+--- TEST 1: LONG LOOP (PC = 0x00000020) ---
+PC: 00000020 | Hist: 0000 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000020 | Hist: 0001 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000020 | Hist: 0011 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000020 | Hist: 0111 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000020 | Hist: 1111 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000020 | Hist: 1111 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000020 | Hist: 1111 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000020 | Hist: 1111 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000020 | Hist: 1111 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000020 | Hist: 1111 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000020 | Hist: 1111 | Pred: 1 | Actual: 0 | MISPREDICT
+
+--- TEST 2: ALTERNATING PATTERN (PC = 0x00000030) ---
+PC: 00000030 | Hist: 0000 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000030 | Hist: 0001 | Pred: 1 | Actual: 0 | MISPREDICT
+PC: 00000030 | Hist: 0010 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000030 | Hist: 0101 | Pred: 1 | Actual: 0 | MISPREDICT
+PC: 00000030 | Hist: 1010 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000030 | Hist: 0101 | Pred: 0 | Actual: 0 |    CORRECT
+PC: 00000030 | Hist: 1010 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000030 | Hist: 0101 | Pred: 0 | Actual: 0 |    CORRECT
+PC: 00000030 | Hist: 1010 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000030 | Hist: 0101 | Pred: 0 | Actual: 0 |    CORRECT
+PC: 00000030 | Hist: 1010 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000030 | Hist: 0101 | Pred: 0 | Actual: 0 |    CORRECT
+
+--- TEST 3: INTERLEAVED INDEPENDENCE ---
+PC: 00000040 | Hist: 0000 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000050 | Hist: 0000 | Pred: 1 | Actual: 0 | MISPREDICT
+PC: 00000040 | Hist: 0001 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000050 | Hist: 0000 | Pred: 1 | Actual: 0 | MISPREDICT
+PC: 00000040 | Hist: 0011 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000050 | Hist: 0000 | Pred: 0 | Actual: 0 |    CORRECT
+PC: 00000040 | Hist: 0111 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000050 | Hist: 0000 | Pred: 0 | Actual: 0 |    CORRECT
+PC: 00000040 | Hist: 1111 | Pred: 1 | Actual: 1 |    CORRECT
+PC: 00000050 | Hist: 0000 | Pred: 0 | Actual: 0 |    CORRECT
+
+========================================
+          SIMULATION COMPLETE           
+========================================
+Total Branches : 33
+Correct Preds  : 28
+Accuracy       : 84 %
+========================================
