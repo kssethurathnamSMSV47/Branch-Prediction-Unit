@@ -28,7 +28,7 @@ module tb_TwoLevelLocal_Complex;
     integer correct_preds = 0;
 
     // --- Instantiate the Unit Under Test (UUT) ---
-    TwoLevelLocalPredictor #(
+    TwoLevelLocalPred #(
         .PC_BITS(PC_BITS),
         .HIST_BITS(HIST_BITS)
     ) uut (
