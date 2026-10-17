@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="u" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="600" fill="#ffffff"/>
+  <text x="600" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">bpu · Tournament Branch Predictor + Branch Target Buffer</text>
+
+  <!-- fetch pc -->
+  <text x="10" y="92" font-size="14" font-weight="bold" fill="#0f172a">fetch_pc</text><text x="10" y="108" font-size="12" fill="#0f172a">[31:0]</text>
+  <line x1="40" y1="114" x2="40" y2="480" stroke="#334155" stroke-width="2"/>
+  <line x1="40" y1="150" x2="118" y2="150" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="40" y1="290" x2="118" y2="290" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="40" y1="480" x2="118" y2="480" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+  <text x="44" y="143" font-size="10" fill="#475569">PC[7:2]</text>
+  <text x="44" y="283" font-size="10" fill="#475569">PC[13:2]</text>
+  <text x="44" y="473" font-size="10" fill="#475569">PC[7:2]</text>
+
+  <!-- Tournament boundary -->
+  <rect x="104" y="60" width="700" height="350" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="118" y="80" font-size="13" fill="#64748b">TournamentPredictor</text>
+
+  <!-- Local predictor -->
+  <rect x="120" y="100" width="420" height="110" rx="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="132" y="122" font-size="14" font-weight="bold" fill="#1e3a8a">TwoLevelLocalPred  (PAg)</text>
+  <rect x="136" y="134" width="150" height="62" rx="6" fill="#ffffff" stroke="#1d4ed8"/>
+  <text x="211" y="158" text-anchor="middle" font-size="13" fill="#1e3a8a">LHT</text>
+  <text x="211" y="178" text-anchor="middle" font-size="11" fill="#1e3a8a">64 × 10-bit histories</text>
+  <line x1="286" y1="165" x2="354" y2="165" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+  <text x="296" y="158" font-size="11" fill="#475569">hist[9:0]</text>
+  <rect x="356" y="134" width="170" height="62" rx="6" fill="#ffffff" stroke="#1d4ed8"/>
+  <text x="441" y="158" text-anchor="middle" font-size="13" fill="#1e3a8a">Local PHT</text>
+  <text x="441" y="178" text-anchor="middle" font-size="11" fill="#1e3a8a">1024 × 2-bit counters</text>
+
+  <!-- Global predictor -->
+  <rect x="120" y="230" width="420" height="110" rx="10" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"/>
+  <text x="132" y="252" font-size="14" font-weight="bold" fill="#4c1d95">GlobalPred  (gshare)</text>
+  <circle cx="232" cy="295" r="18" fill="#ffffff" stroke="#6d28d9" stroke-width="2"/>
+  <line x1="220" y1="295" x2="244" y2="295" stroke="#4c1d95" stroke-width="2"/><line x1="232" y1="283" x2="232" y2="307" stroke="#4c1d95" stroke-width="2"/>
+  <line x1="104" y1="290" x2="212" y2="293" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="140" y="310" width="66" height="24" rx="4" fill="#ffffff" stroke="#6d28d9"/>
+  <text x="173" y="327" text-anchor="middle" font-size="11" fill="#4c1d95">GHR[11:0]</text>
+  <line x1="206" y1="322" x2="220" y2="310" stroke="#6d28d9" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="250" y1="295" x2="354" y2="295" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+  <text x="262" y="288" font-size="11" fill="#475569">12-bit index</text>
+  <rect x="356" y="264" width="170" height="62" rx="6" fill="#ffffff" stroke="#6d28d9"/>
+  <text x="441" y="288" text-anchor="middle" font-size="13" fill="#4c1d95">Global PHT</text>
+  <text x="441" y="308" text-anchor="middle" font-size="11" fill="#4c1d95">4096 × 2-bit counters</text>
+
+  <!-- Choice predictor -->
+  <rect x="566" y="230" width="220" height="110" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+  <text x="578" y="252" font-size="14" font-weight="bold" fill="#78350f">ChoicePred</text>
+  <rect x="582" y="264" width="188" height="62" rx="6" fill="#ffffff" stroke="#b45309"/>
+  <text x="676" y="288" text-anchor="middle" font-size="13" fill="#78350f">Choice PT (by GHR)</text>
+  <text x="676" y="308" text-anchor="middle" font-size="11" fill="#78350f">4096 × 2-bit counters</text>
+  <line x1="173" y1="334" x2="173" y2="352" stroke="#b45309" stroke-width="1.5"/>
+  <line x1="173" y1="352" x2="676" y2="352" stroke="#b45309" stroke-width="1.5"/>
+  <line x1="676" y1="352" x2="676" y2="328" stroke="#b45309" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="300" y="368" font-size="11" fill="#b45309">GHR also indexes the choice table</text>
+
+  <!-- mux -->
+  <path d="M640,120 L690,140 L690,200 L640,220 Z" fill="#fde68a" stroke="#b45309" stroke-width="2"/>
+  <text x="646" y="150" font-size="11" fill="#78350f">local</text>
+  <text x="646" y="200" font-size="11" fill="#78350f">global</text>
+  <line x1="526" y1="165" x2="560" y2="165" stroke="#334155" stroke-width="2"/>
+  <line x1="560" y1="165" x2="560" y2="146" stroke="#334155" stroke-width="2"/>
+  <line x1="560" y1="146" x2="638" y2="146" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="526" y1="295" x2="548" y2="295" stroke="#334155" stroke-width="2"/>
+  <line x1="548" y1="295" x2="548" y2="196" stroke="#334155" stroke-width="2"/>
+  <line x1="548" y1="196" x2="638" y2="196" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="665" y1="264" x2="665" y2="212" stroke="#b45309" stroke-width="2" marker-end="url(#a)"/>
+  <text x="674" y="224" font-size="11" fill="#b45309">use_global_pred</text>
+  <line x1="690" y1="170" x2="842" y2="170" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+  <text x="700" y="162" font-size="12" fill="#334155">final_prediction</text>
+
+  <!-- BTB -->
+  <rect x="120" y="430" width="420" height="110" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="132" y="452" font-size="14" font-weight="bold" fill="#14532d">BTB  (direct-mapped, 64 entries)</text>
+  <text x="132" y="476" font-size="12" fill="#14532d">valid · 32-bit tag (full PC) · 32-bit target</text>
+  <text x="132" y="496" font-size="12" fill="#14532d">hit = valid[idx] &amp;&amp; tag[idx] == fetch_pc</text>
+  <text x="132" y="516" font-size="12" fill="#14532d">allocated only when a branch resolves taken</text>
+  <line x1="540" y1="460" x2="842" y2="460" stroke="#334155" stroke-width="2"/>
+  <text x="590" y="452" font-size="12" fill="#334155">btb_target</text>
+  <line x1="540" y1="500" x2="822" y2="500" stroke="#334155" stroke-width="2"/>
+  <line x1="822" y1="500" x2="822" y2="210" stroke="#334155" stroke-width="2"/>
+  <line x1="822" y1="210" x2="842" y2="210" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+  <text x="590" y="494" font-size="12" fill="#334155">btb_hit</text>
+
+  <!-- AND gate -->
+  <path d="M844,150 L874,150 A40,40 0 0 1 874,230 L844,230 Z" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+  <text x="868" y="196" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f172a">AND</text>
+  <line x1="914" y1="190" x2="1070" y2="190" stroke="#334155" stroke-width="2"/>
+  <circle cx="990" cy="190" r="4" fill="#334155"/>
+  <text x="1076" y="186" font-size="14" font-weight="bold" fill="#0f172a">predict_taken</text>
+  <line x1="990" y1="190" x2="990" y2="436" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- next pc mux -->
+  <line x1="842" y1="460" x2="842" y2="470" stroke="#334155" stroke-width="2"/>
+  <line x1="842" y1="470" x2="962" y2="470" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="860" y="510" width="80" height="30" rx="6" fill="#ffffff" stroke="#334155"/>
+  <text x="900" y="530" text-anchor="middle" font-size="12" fill="#0f172a">PC + 4</text>
+  <line x1="940" y1="525" x2="962" y2="510" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M964,440 L1014,460 L1014,520 L964,540 Z" fill="#fde68a" stroke="#b45309" stroke-width="2"/>
+  <text x="970" y="474" font-size="11" fill="#78350f">1</text>
+  <text x="970" y="514" font-size="11" fill="#78350f">0</text>
+  <line x1="1014" y1="490" x2="1070" y2="490" stroke="#334155" stroke-width="2" marker-end="url(#a)"/>
+  <text x="1076" y="486" font-size="14" font-weight="bold" fill="#0f172a">next_pc</text>
+  <text x="1076" y="230" font-size="12" fill="#475569">btb_hit_out,</text>
+  <text x="1076" y="246" font-size="12" fill="#475569">fetch_local_hist,</text>
+  <text x="1076" y="262" font-size="12" fill="#475569">fetch_global_hist</text>
+  <text x="1076" y="278" font-size="12" fill="#475569">→ carried down</text>
+  <text x="1076" y="294" font-size="12" fill="#475569">   the pipeline</text>
+
+  <!-- update bus -->
+  <rect x="104" y="560" width="900" height="30" rx="6" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="554" y="580" text-anchor="middle" font-size="12" fill="#7f1d1d">Execute-stage update (one cycle): update_en · update_pc · update_target · update_local_hist · update_global_hist · update_branch_taken</text>
+  <g stroke="#b91c1c" stroke-width="1.5" stroke-dasharray="4 3">
+    <line x1="330" y1="560" x2="330" y2="542" marker-end="url(#u)"/>
+    <line x1="560" y1="560" x2="560" y2="412" marker-end="url(#u)"/>
+  </g>
+</svg>
